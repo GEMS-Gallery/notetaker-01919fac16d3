@@ -1,0 +1,28 @@
+type Result_2 = 
+ variant {
+   err: text;
+   ok: nat;
+ };
+type Result_1 = 
+ variant {
+   err: text;
+   ok: Note;
+ };
+type Result = 
+ variant {
+   err: text;
+   ok: bool;
+ };
+type Note = 
+ record {
+   bulletPoints: vec text;
+   id: nat;
+   subject: text;
+ };
+service : {
+  createNote: (text, vec text) -> (Result_2);
+  deleteNote: (nat) -> (Result);
+  getNote: (nat) -> (Result_1) query;
+  getNotes: () -> (vec Note) query;
+  updateNote: (nat, text, vec text) -> (Result);
+}
